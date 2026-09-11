@@ -1,0 +1,13 @@
+[Unit]
+Description=Grow the Orange Pi 5 Plus root partition and filesystem
+After=local-fs.target
+ConditionPathExists=!/var/lib/orangepi5plus/grow-root.done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/op5-grow-root
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

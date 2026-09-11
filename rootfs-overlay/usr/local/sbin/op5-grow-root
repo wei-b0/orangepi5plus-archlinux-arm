@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+mkdir -p /var/lib/orangepi5plus
+root_device=$(findmnt -n -o SOURCE /)
+root_device=$(readlink -f "$root_device")
+parent_name=$(lsblk -n -o PKNAME "$root_device")
+if [ -z "$parent_name" ]; then
+    exit 0
+fi
+systemd-repart --dry-run=no --growfs=yes "/dev/$parent_name"
+touch /var/lib/orangepi5plus/grow-root.done
+

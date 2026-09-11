@@ -1,0 +1,26 @@
+/var/log/pacman.log {
+    monthly
+    rotate 3
+    compress
+    missingok
+    notifempty
+    create 0644 root root
+}
+
+/var/log/btmp {
+    monthly
+    rotate 3
+    compress
+    missingok
+    notifempty
+    create 0600 root utmp
+}
+
+/var/log/wtmp {
+    monthly
+    rotate 3
+    compress
+    missingok
+    notifempty
+    create 0664 root utmp
+}

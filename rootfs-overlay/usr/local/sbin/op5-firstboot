@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eu
+mkdir -p /var/lib/orangepi5plus
+if [ ! -s /etc/machine-id ]; then
+    systemd-machine-id-setup
+fi
+mkdir -p /var/lib/dbus
+ln -sfn /etc/machine-id /var/lib/dbus/machine-id
+ssh-keygen -A
+if command -v nvme >/dev/null 2>&1; then
+    mkdir -p /etc/nvme
+    if [ ! -s /etc/nvme/hostid ]; then
+        uuidgen > /etc/nvme/hostid
+    fi
+    if [ ! -s /etc/nvme/hostnqn ]; then
+        nvme gen-hostnqn > /etc/nvme/hostnqn
+    fi
+fi
+if [ ! -s /etc/pacman.d/gnupg/pubring.kbx ]; then
+    pacman-key --init
+    pacman-key --populate archlinux archlinuxarm
+fi
+chage -d 0 alarm
+chage -d 0 root
+touch /var/lib/orangepi5plus/firstboot.done

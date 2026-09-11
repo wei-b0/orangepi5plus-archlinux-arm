@@ -1,0 +1,14 @@
+[Unit]
+Description=Initialize Orange Pi 5 Plus identity and credentials
+After=local-fs.target
+Before=sshd.service
+ConditionPathExists=!/var/lib/orangepi5plus/firstboot.done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/op5-firstboot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
