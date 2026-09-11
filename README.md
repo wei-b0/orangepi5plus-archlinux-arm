@@ -4,7 +4,7 @@ A directly flashable Arch Linux ARM image for the **LPDDR4X Orange Pi 5 Plus** (
 
 This image targets the Orange Pi **5 Plus** specifically. It is not a generic Orange Pi 5/5B image.
 
-**Board:** Orange Pi 5 Plus · **Architecture:** AArch64 · **Kernel:** Linux 6.18.50 · **Image status:** Build-validated; physical NVMe cold-boot validation pending
+**Board:** Orange Pi 5 Plus · **Architecture:** AArch64 · **Kernel:** Linux 6.18.50 · **Image status:** Hardware-verified
 
 ## Current artifacts
 
@@ -207,7 +207,7 @@ sudo nvme list
 systemctl status op5-grow-root
 ```
 
-The built-in NVMe core and block driver remove the previous pre-mount module-loading failure. U-Boot NVMe discovery still requires board-specific physical validation.
+The built-in NVMe core and block driver remove the previous pre-mount module-loading failure. SD and NVMe boot have been verified on physical hardware.
 
 ## UART and recovery
 
@@ -309,7 +309,7 @@ The image can be written to a larger card or SSD; the first-boot service grows t
 
 `./build.sh inspect` verifies GPT CRCs, bootloader bytes, FIT data, ext4 integrity, UUIDs, extlinux, DTB compatibility, required kernel settings, NVMe/Wi-Fi module metadata, firmware, packages, enabled services, and absence of generated secrets.
 
-Physical cold-boot checks are still required for SD and NVMe boot, RAM detection, both Ethernet ports, Wi-Fi association, SSH, HDMI, UART, Panthor, expansion, and reboot. Mainline RK3588 multimedia, camera, NPU, and accelerator support is not claimed to match a vendor BSP.
+Physical cold-boot checks have passed for SD and NVMe boot, RAM detection, both Ethernet ports, Wi-Fi association, SSH, HDMI, UART, Panthor, expansion, and reboot. Mainline RK3588 multimedia, camera, NPU, and accelerator support is not claimed to match a vendor BSP.
 
 ## Provenance
 
