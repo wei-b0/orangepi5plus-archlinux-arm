@@ -5,7 +5,6 @@
 **A maintainable, directly flashable Arch Linux ARM image for the LPDDR4X RK3588 board.**
 
 [![Latest release](https://img.shields.io/github/v/release/wei-b0/orangepi5plus-archlinux-arm?display_name=tag&label=latest%20release&color=1677ff)](https://github.com/wei-b0/orangepi5plus-archlinux-arm/releases/latest)
-[![Release downloads](https://img.shields.io/github/downloads/wei-b0/orangepi5plus-archlinux-arm/total?label=downloads&color=0f766e)](https://github.com/wei-b0/orangepi5plus-archlinux-arm/releases)
 [![Board](https://img.shields.io/badge/board-Orange%20Pi%205%20Plus-2563eb)](#hardware-and-software-baseline)
 [![Architecture](https://img.shields.io/badge/architecture-AArch64-0891b2)](#hardware-and-software-baseline)
 [![Status](https://img.shields.io/badge/status-hardware--verified-16a34a)](#boot-layout-and-validation)
