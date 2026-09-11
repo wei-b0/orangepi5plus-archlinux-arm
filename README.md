@@ -1,10 +1,48 @@
+<div align="center">
+
 # Arch Linux ARM for Orange Pi 5 Plus
 
-A directly flashable Arch Linux ARM image for the **LPDDR4X Orange Pi 5 Plus** (Rockchip RK3588). It is intended as a normal AArch64 Arch base for board use and remote coding workloads.
+**A maintainable, directly flashable Arch Linux ARM image for the LPDDR4X RK3588 board.**
 
-This image targets the Orange Pi **5 Plus** specifically. It is not a generic Orange Pi 5/5B image.
+[![Latest release](https://img.shields.io/github/v/release/wei-b0/orangepi5plus-archlinux-arm?display_name=tag&label=latest%20release&color=1677ff)](https://github.com/wei-b0/orangepi5plus-archlinux-arm/releases/latest)
+[![Release downloads](https://img.shields.io/github/downloads/wei-b0/orangepi5plus-archlinux-arm/total?label=downloads&color=0f766e)](https://github.com/wei-b0/orangepi5plus-archlinux-arm/releases)
+[![Board](https://img.shields.io/badge/board-Orange%20Pi%205%20Plus-2563eb)](#hardware-and-software-baseline)
+[![Architecture](https://img.shields.io/badge/architecture-AArch64-0891b2)](#hardware-and-software-baseline)
+[![Status](https://img.shields.io/badge/status-hardware--verified-16a34a)](#boot-layout-and-validation)
 
-**Board:** Orange Pi 5 Plus · **Architecture:** AArch64 · **Kernel:** Linux 6.18.50 · **Image status:** Hardware-verified
+[![Download latest release](https://img.shields.io/badge/download-latest%20release-1677ff?style=for-the-badge)](https://github.com/wei-b0/orangepi5plus-archlinux-arm/releases/latest)
+
+</div>
+
+This image stays close to normal Arch Linux ARM while providing the board-specific boot chain, kernel, firmware, networking, and first-boot setup needed for a useful workstation or remote coding agent. It targets the Orange Pi **5 Plus** specifically; it is not a generic Orange Pi 5/5B image.
+
+| Board | Architecture | Kernel | Release status |
+| --- | --- | --- | --- |
+| Orange Pi 5 Plus LPDDR4X (RK3588) | AArch64 | Linux 6.18.50 | Hardware-verified |
+
+## Quick start
+
+Download the latest `.img.zst` from [Releases](https://github.com/wei-b0/orangepi5plus-archlinux-arm/releases/latest), verify its checksum, and stream it to the whole SD-card device:
+
+```sh
+sha256sum --check orangepi5plus-archlinuxarm.img.zst.sha256
+zstd -dc -- orangepi5plus-archlinuxarm.img.zst | sudo dd of=/dev/sdX bs=4M status=progress conv=fsync
+```
+
+Replace `/dev/sdX` with the intended whole device. For the full procedure, first-boot setup, Wi-Fi, NVMe installation, and recovery, use the sections below.
+
+## Contents
+
+- [Current artifacts](#current-artifacts)
+- [Hardware and software baseline](#hardware-and-software-baseline)
+- [Flash a microSD card](#flash-a-microsd-card)
+- [First boot](#first-boot)
+- [Ethernet and TL-WN725N Wi-Fi](#ethernet-and-tl-wn725n-wi-fi)
+- [Use the image as an NVMe root](#use-the-image-as-an-nvme-root)
+- [UART and recovery](#uart-and-recovery)
+- [Build from source](#build-from-source)
+- [Image measurements](#image-measurements)
+- [Boot layout and validation](#boot-layout-and-validation)
 
 ## Current artifacts
 
